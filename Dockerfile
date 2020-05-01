@@ -35,6 +35,7 @@ RUN set -ex \
 		ca-certificates \
 		openssl \
 		tar \
+		git \
 	\
 	&& wget -O postgresql.tar.bz2 "https://ftp.postgresql.org/pub/source/v$PG_VERSION/postgresql-$PG_VERSION.tar.bz2" \
 	&& echo "$PG_SHA256 *postgresql.tar.bz2" | sha256sum -c - \
