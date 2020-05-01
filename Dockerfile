@@ -33,7 +33,7 @@ RUN set -ex \
 		tar \
 	\
 	&& wget -O postgresql.tar.bz2 "https://ftp.postgresql.org/pub/source/v$PG_VERSION/postgresql-$PG_VERSION.tar.bz2" \
-	&& echo "$PG_SHA256 *postgresql.tar.bz2" | sha256sum -c - \
+	&& echo "$PG_SHA256 postgresql.tar.bz2" | sha256sum -c - \
 	&& mkdir -p /usr/src/postgresql \
 	&& tar \
 		--extract \
