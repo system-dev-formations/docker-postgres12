@@ -28,12 +28,12 @@ ENV PG_SHA256 ad1dcc4c4fc500786b745635a9e1eba950195ce20b8913f50345bb7d5369b5de
 RUN set -ex \
 	\
 	&& echo '@testing http://nl.alpinelinux.org/alpine/edge/testing' >> /etc/apk/repositories  \
-	&& apk --update --virtual .fetch-deps \
+	&&  apk --update \
+	    sbcl@testing \
+	&& apk add --no-cache --virtual .fetch-deps \
 		ca-certificates \
 		openssl \
 		tar \
-		sbcl@testing \
-
 	\
 	&& wget -O postgresql.tar.bz2 "https://ftp.postgresql.org/pub/source/v$PG_VERSION/postgresql-$PG_VERSION.tar.bz2" \
 	&& echo "$PG_SHA256 *postgresql.tar.bz2" | sha256sum -c - \
