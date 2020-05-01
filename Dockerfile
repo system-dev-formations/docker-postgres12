@@ -31,6 +31,7 @@ RUN set -ex \
 	&&  apk add --update \
 	    sbcl@testing \
 	&& apk add --no-cache --virtual .fetch-deps \
+	    bash \
 		ca-certificates \
 		openssl \
 		tar \
@@ -138,6 +139,19 @@ RUN set -ex \
 # tzdata is optional, but only adds around 1Mb to image size and is recommended by Django documentation:
 # https://docs.djangoproject.com/en/1.10/ref/databases/#optimizing-postgresql-s-configuration
 		tzdata \
+	&& git clone https://github.com/timescale/timescaledb.git \
+    && cd timescaledb \
+    && git checkout 1.7.0 \
+    && ./bootstrap -DREGRESS_CHECKS=OFF \
+    && cd build && make \
+    && make install \
+    && cd / \
+    && wget https://github.com/dimitri/pgloader/archive/v3.6.2.tar.gz \
+    && tar -zxvf v3.6.2.tar.gz \
+    && cd pgloader-3.6.2 \
+    && make	\
+    && cp /pgloader-3.6.2/build/pgloader /usr/bin
+    \
 	&& apk del .fetch-deps .build-deps \
 	&& cd / \
 	&& rm -rf \
