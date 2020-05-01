@@ -23,7 +23,7 @@ RUN mkdir /docker-entrypoint-initdb.d
 
 ENV PG_MAJOR 12
 ENV PG_VERSION 12.2
-ENV PG_SHA256 8808449444ee9b086054a6dcfbfb98029e4f8022372c2edf3de5b6d8f417c8e4
+ENV PG_SHA256 ad1dcc4c4fc500786b745635a9e1eba950195ce20b8913f50345bb7d5369b5de
 
 RUN set -ex \
 	\
@@ -33,7 +33,7 @@ RUN set -ex \
 		tar \
 	\
 	&& wget -O postgresql.tar.bz2 "https://ftp.postgresql.org/pub/source/v$PG_VERSION/postgresql-$PG_VERSION.tar.bz2" \
-	&& echo "$PG_SHA256 postgresql.tar.bz2" | sha256sum -c - \
+	&& echo "$PG_SHA256 *postgresql.tar.bz2" | sha256sum -c - \
 	&& mkdir -p /usr/src/postgresql \
 	&& tar \
 		--extract \
