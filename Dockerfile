@@ -152,7 +152,7 @@ RUN set -ex \
     && tar -zxvf v3.6.2.tar.gz \
     && cd pgloader-3.6.2 \
     && make	\
-    # && cp /pgloader-3.6.2/build/pgloader /usr/local/bin \
+    # && cp /pgloader-3.6.2/build/bin/pgloader /usr/local/bin \
     \
 	&& apk del .fetch-deps .build-deps \
 	&& cd / \
@@ -164,7 +164,7 @@ RUN set -ex \
 
 # make the sample config easier to munge (and "correct by default")
 RUN sed -ri "s!^#?(listen_addresses)\s*=\s*\S+.*!\1 = '*'!" /usr/local/share/postgresql/postgresql.conf.sample
-
+RUN sed -i "$ a  shared_preload_libraries = 'timescaledb' " /usr/local/share/postgresql/postgresql.conf.sample
 RUN mkdir -p /var/run/postgresql && chown -R postgres:postgres /var/run/postgresql && chmod 2777 /var/run/postgresql
 
 ENV PGDATA /var/lib/postgresql/data
