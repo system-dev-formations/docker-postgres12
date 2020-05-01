@@ -28,7 +28,7 @@ ENV PG_SHA256 ad1dcc4c4fc500786b745635a9e1eba950195ce20b8913f50345bb7d5369b5de
 RUN set -ex \
 	\
 	&& echo '@testing http://nl.alpinelinux.org/alpine/edge/testing' >> /etc/apk/repositories  \
-	&& apk add --no-cache --update --virtual .fetch-deps \
+	&& apk add --update --virtual .fetch-deps \
 		ca-certificates \
 		openssl \
 		tar \
