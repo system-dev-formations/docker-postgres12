@@ -150,7 +150,7 @@ RUN set -ex \
     && tar -zxvf v3.6.2.tar.gz \
     && cd pgloader-3.6.2 \
     && make	\
-    && cp /pgloader-3.6.2/build/pgloader /usr/bin
+    && cp /pgloader-3.6.2/build/pgloader /usr/bin \
     \
 	&& apk del .fetch-deps .build-deps \
 	&& cd / \
