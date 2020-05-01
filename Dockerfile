@@ -141,6 +141,7 @@ RUN set -ex \
 # tzdata is optional, but only adds around 1Mb to image size and is recommended by Django documentation:
 # https://docs.djangoproject.com/en/1.10/ref/databases/#optimizing-postgresql-s-configuration
 		tzdata \
+	&& cd / \
 	&& git clone https://github.com/timescale/timescaledb.git \
     && cd timescaledb \
     && git checkout 1.7.0 \
@@ -160,6 +161,9 @@ RUN set -ex \
 		/usr/src/postgresql \
 		/usr/local/share/doc \
 		/usr/local/share/man \
+		/pgloader-3.6.2 \
+		/v3.6.2.tar.gz \
+		/timescaledb \
 	&& find /usr/local -name '*.a' -delete
 
 # make the sample config easier to munge (and "correct by default")
