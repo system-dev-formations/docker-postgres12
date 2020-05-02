@@ -10,5 +10,11 @@ Latest version of postgresql coming with timescaledb and pgloader
 # Run 
 ```shell script
   docker exec -it db /bin/bash
+  apk add --no-cache git bison clang make gcc g++ flex   
+  git clone  https://github.com/system-dev-formations/tpc-ds-postgresql.git
+  cd tpc-ds-postgresql
+  cd tpcds-kit/tools
+  make
+  ./dsdgen -DIR /tmp -SCALE 1 -FORCE -VERBOSE
   
 ```
