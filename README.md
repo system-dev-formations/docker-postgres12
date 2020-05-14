@@ -18,3 +18,5 @@ Latest version of postgresql coming with timescaledb and pgloader
   ./dsdgen -DIR /tmp -SCALE 1 -FORCE -VERBOSE
   
 ```
+
+
