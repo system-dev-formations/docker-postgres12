@@ -148,12 +148,12 @@ RUN set -ex \
     && ./bootstrap -DREGRESS_CHECKS=OFF \
     && cd build && make \
     && make -j "$(nproc)" install \
-    && cd / \
-    && wget https://github.com/dimitri/pgloader/archive/v3.6.2.tar.gz \
-    && tar -zxvf v3.6.2.tar.gz \
-    && cd pgloader-3.6.2 \
-    && make  -j "$(nproc)"	\
-    && cp /pgloader-3.6.2/build/bin/pgloader /usr/local/bin \
+    #&& cd / \
+    #&& wget https://github.com/dimitri/pgloader/archive/v3.6.2.tar.gz \
+    #&& tar -zxvf v3.6.2.tar.gz \
+    #&& cd pgloader-3.6.2 \
+    #&& make  -j "$(nproc)"	\
+    #&& cp /pgloader-3.6.2/build/bin/pgloader /usr/local/bin \
     \
 	&& apk del .fetch-deps .build-deps \
 	&& cd / \
